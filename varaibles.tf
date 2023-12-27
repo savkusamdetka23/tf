@@ -21,7 +21,7 @@ variable "GITHUB_TOKEN" {
 
 variable "FLUX_GITHUB_REPO" {
   type        = string
-  default     = "flux-gitops"
+  default     = "flux-gitops-gke"
   description = "Flux GitOps repository"
 }
 
@@ -29,4 +29,16 @@ variable "FLUX_GITHUB_TARGET_PATH" {
   type        = string
   default     = "clusters"
   description = "Flux manifests subdirectory"
+}
+variable "GKE_MACHINE_TYPE" {
+  type        = string
+  default     = "g1-small"
+  description = "machine type"
+}
+
+variable "GKE_NUM_NODES" {
+  type        = number
+  default     = 2
+  description = "node pool count"
+
 }
