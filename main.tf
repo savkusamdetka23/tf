@@ -15,17 +15,10 @@ module "gke_cluster" {
   source         = "github.com/den-vasyliev/tf-google-gke-cluster?ref=gke_auth"
   GOOGLE_REGION  = var.GOOGLE_REGION
   GOOGLE_PROJECT = var.GOOGLE_PROJECT
-  GKE_NUM_NODES  = 1
+  GKE_NUM_NODES  = 2
 }
 
-#module "kind_cluster" {
-#  source = "github.com/den-vasyliev/tf-kind-cluster"
-#  #source = "github.com/den-vasyliev/tf-kind-cluster?ref=cert_auth"
-#  #source = "./modules/tf-kind-cluster"
-#}
-
 module "flux_bootstrap" {
-  #source = "./modules/flux_bootstrap"
   source            = "github.com/den-vasyliev/tf-fluxcd-flux-bootstrap?ref=gke_auth"
   github_repository = "${var.GITHUB_OWNER}/${var.FLUX_GITHUB_REPO}"
   private_key       = module.tls_private_key.private_key_pem
